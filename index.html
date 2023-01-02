@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web2-lab5-PWA</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">Web2-lab5-PWA</div>
+      <nav>
+        <a href="/">Početna</a>
+        <a href="images.html">Pregled slika</a>
+        <a href="upload.html">Slikavanje</a>
+      </nav>
+      <div class="tasks">
+        <ol>
+          <li>nativ API (kamera) - napravljeno</li>
+          <li>
+            biti installable - napravljeno
+            <ul>
+              <li>
+                web: pojavi se ikonica u url bar-u za instalirati aplikaciju
+              </li>
+              <li>mobile: iskoci gumb za instalaciju na Home screen</li>
+            </ul>
+          </li>
+          <li>
+            imati barem jednu cacheing strategiju - napravljeno
+            <ul>
+              <li>slike: implementirana "Stale-while-revalidate" strategija</li>
+              <li>
+                ostale datoteke: "Cache first, falling back to network"
+                strategija
+              </li>
+            </ul>
+          </li>
+          <li>
+            offline rad barem za app shell - napravljeno
+            <ul>
+              <li>
+                provjera kao na predavanju (odabrati offline mode u application
+                tabu u inspect elements u Chromu)
+              </li>
+            </ul>
+          </li>
+          <li>background sync - nije napravljeno</li>
+          <li>
+            push notifikacija (npr. nakon što prođe bg sync možete poslati push
+            notif) - nije napravljeno
+          </li>
+          <li>
+            demonstrirati barem na jednom primjeru progressive
+            enhancement/gracefull degradation
+            <ul>
+              <li>
+                jedno od najznačajnijih poboljšanja je instalabilnost - čime se
+                (posebice na mobilnom uređaju) poboljšava korisnikovo korištenje
+                - web aplikacija se "maskira" u nativnu - prednost dodavanja na
+                Home screen
+              </li>
+              <li>"re-engageable" pomoću push notifikacija</li>
+              <li>mogućnost rada u offline načinu</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </body>
+  <script>
+    navigator.serviceWorker
+      .register("./sw.js")
+      .then((reg) => console.log("SW registriran!", reg))
+      .catch((err) => console.error("Error pri registraciji SW-a", err));
+  </script>
+</html>
